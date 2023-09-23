@@ -1,6 +1,6 @@
 specVersion: 0.0.5
 schema:
-  file: ./schema.graphql
+  file: schema.graphql
 dataSources:
   - kind: ethereum
     name: ComponentRegistry
@@ -24,7 +24,7 @@ dataSources:
         - UpdateUnitHash
       abis:
         - name: ComponentRegistry
-          file: ./abis/ComponentRegistry.json
+          file: ComponentRegistry/abis/ComponentRegistry.json
       eventHandlers:
         - event: Approval(indexed address,indexed address,indexed uint256)
           handler: handleApproval
@@ -42,7 +42,7 @@ dataSources:
           handler: handleTransfer
         - event: UpdateUnitHash(uint256,uint8,bytes32)
           handler: handleUpdateUnitHash
-      file: ./src/component-registry.ts
+      file: ComponentRegistry/ComponentRegistry.wasm
   - kind: ethereum
     name: AgentRegistry
     network: mainnet
@@ -65,7 +65,7 @@ dataSources:
         - AgentRegistryUpdateUnitHash
       abis:
         - name: AgentRegistry
-          file: ./abis/AgentRegistry.json
+          file: AgentRegistry/abis/AgentRegistry.json
       eventHandlers:
         - event: Approval(indexed address,indexed address,indexed uint256)
           handler: handleApproval
@@ -83,7 +83,7 @@ dataSources:
           handler: handleTransfer
         - event: UpdateUnitHash(uint256,uint8,bytes32)
           handler: handleUpdateUnitHash
-      file: ./src/agent-registry.ts
+      file: AgentRegistry/AgentRegistry.wasm
   - kind: ethereum
     name: ServiceRegistry
     network: mainnet
@@ -117,7 +117,7 @@ dataSources:
         - UpdateService
       abis:
         - name: ServiceRegistry
-          file: ./abis/ServiceRegistry.json
+          file: ServiceRegistry/abis/ServiceRegistry.json
       eventHandlers:
         - event: ActivateRegistration(indexed uint256)
           handler: handleActivateRegistration
@@ -157,4 +157,4 @@ dataSources:
           handler: handleTransfer
         - event: UpdateService(indexed uint256,bytes32)
           handler: handleUpdateService
-      file: ./src/service-registry.ts
+      file: ServiceRegistry/ServiceRegistry.wasm
